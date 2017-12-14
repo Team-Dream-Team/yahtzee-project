@@ -41,4 +41,4 @@ Keeps track of rolls and values
 	* generates a random integer between one and six for each die
 
 ## Main Code:
-![Outline] (Hand_Drawn_Outline.jpeg)
+![Outline] (https://github.com/Team-Dream-Team/yahtzee-project/blob/master/Hand_Drawn_Outline.jpeg)
