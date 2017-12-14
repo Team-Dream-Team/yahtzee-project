@@ -21,7 +21,7 @@ with another pair of numbers). The number of players and methods of scoring will
   
   "Do you want to roll again? 
   
-   ## If player doesn't want to roll again or can't roll again, categories and methods for scoring will be revealed. 
+  ###### If player doesn't want to roll again or can't roll again, categories and methods for scoring will be revealed. 
    
   "Which number do you want to remove?"
   
@@ -30,12 +30,26 @@ with another pair of numbers). The number of players and methods of scoring will
 3. Scoring
 
   Based on what the player responds to the command argument, a method of scoring will be removed from the 'method of scoring list'. Then, update scores for players using the player class when the 'scoring method' is entered into the command line. 
- 
- Categories: 
- - 
+ Top Scoreboard
+
+   - Ones
+   - Twos
+   - Threes
+   - Fours
+   - Fives
+   - Sixes
+
+ Bottom Scoreboard
+
+  - Three of a kind
+  - Four of a Kind
+  - Full house
+  - Small Straight
+  - Large Straight
+  - Chance
+  - Yahtzee
   
-  
-  Repeat these procedures as many times as needed while alternating players. 
+ Repeat these procedures as many times as needed while alternating players for their respective turns. 
   
  
  ###### Ben will work on the player and dice class 
