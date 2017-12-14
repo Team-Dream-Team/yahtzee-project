@@ -1,6 +1,6 @@
 #Yahtzee outline
 
-##Classes:
+##Classes -
 ###Player
 Player class contains all methods of scoring of dice rolls on the scoreboard
 **Top Scoreboard**
