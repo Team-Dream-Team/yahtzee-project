@@ -1,7 +1,8 @@
-#Yahtzee outline
+# Yahtzee outline
 
-##Classes -
-###Player
+## Classes -
+Two classes: player and Dice
+### Player
 Player class contains all methods of scoring of dice rolls on the scoreboard
 **Top Scoreboard**
 	
@@ -35,11 +36,11 @@ Player class contains all methods of scoring of dice rolls on the scoreboard
 * Yahtzee
 	* adds 50 points if they roll 5 of the same the first time
 	* adds 100 points if they roll five of the same the next 3 times
-###Dice
+### Dice
 Keeps track of rolls and values
 
 	* Roll
 		* generates a random integer between one and six for each die
 
-##Main Code:
+## Main Code:
 (look at picture)
