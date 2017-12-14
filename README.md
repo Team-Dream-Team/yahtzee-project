@@ -1,9 +1,10 @@
+## **Yatszee**
 Welcome to Yatszee! This game will be able to accomodate the needs of any number of multiplayers. You will be rolling the five dice
 to try to fulfill different methods of scoring from large straight (five consecutive numbers) to full house (three matching numbers
 with another pair of numbers). The number of players and methods of scoring will be in the player class while the logistics of the game and how the game runs step by step will be done through the main code. 
 
 
-###### **Yatszee**
+
 
 1. Introduction 
 
