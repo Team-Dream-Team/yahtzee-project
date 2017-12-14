@@ -5,30 +5,35 @@ with another pair of numbers). The number of players and methods of scoring will
 
 ###### **Yatszee**
 
+1. Introduction 
+
   "Welcome to Yatszee! How many players are playing the game?" (Command line argument)
-  Use this to determine how many players we need for the player class to work.
   
-  ## While loop 3 times. 
   "Enter Player 1 name"
   
-  "Enter Player 2 name"
+  Use this command line above to determine how many players we need for the player class to work.
   
+2. Game play action
+
   Player 1 rolls...
   
-  Display five numbers in the 2d array. 
+  (Display five numbers in the 2d array.)
   
   "Do you want to roll again? 
   
+   ## If player doesn't want to roll again or can't roll again, categories and methods for scoring will be revealed. 
+   
   "Which number do you want to remove?"
   
-  Remove numbers and enter numbers one by one. 
+  Remove numbers and enter numbers to replace one by one with each command line. 
+
+3. Scoring
+
+  Based on what the player responds to the command argument, a method of scoring will be removed from the 'method of scoring list'. Then, update scores for players using the player class when the 'scoring method' is entered into the command line. 
+ 
+ Categories: 
+ - 
   
-  While loop of this...
-  ## If player doesn't want to roll again or can't roll again, categories and methods for scoring will be revealed. 
-  
-  Based on what the player responds to the command argument, a method of scoring will be removed from the 'method of scoring list'.
-  
-  Update scores for players using the player class when the 'scoring method' is entered into the command line. 
   
   Repeat these procedures as many times as needed while alternating players. 
   
