@@ -30,7 +30,7 @@ Player class contains all methods of scoring of dice rolls on the scoreboard
 	* adds 30 points if they have 4 scaling dice
 * Large Straight
 	* adds 40 points if they have 1,2,3,4,5, or 2,3,4,5,6
-* chance
+* Chance
 	* add total of dice
 * Yahtzee
 	* adds 50 points if they roll 5 of the same the first time
