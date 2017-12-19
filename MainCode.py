@@ -25,53 +25,53 @@ yahtzee = 0
 box_design_length = 10
 
 currentPlayer = player1
-
+x = 1
 while x < 27:
 	print(currentPlayer.name+"'s Turn")
-	currentPlayer.roll_dice(5)
+	currentPlayer.roll()
 	choice = input("Which category would you like to choose? (type 'none' to roll again) ")
 
 	if choice == "Ones" or choice == "ones":
-		print(currentPlayer.checkOne())
-		Ones = currentPlayer.checkOne()
+		print(currentPlayer.checkOne(0))
+		Ones = currentPlayer.checkOne(0)
 	elif choice == "Twos" or choice == "twos":
-		print(currentPlayer.checkTwo())
-		Twos = currentPlayer.checkTwo()
+		print(currentPlayer.checkTwo(0))
+		Twos = currentPlayer.checkTwo(0)
 	elif choice == "Threes" or choice == "threes":
-		print(currentPlayer.checkThree())
-		Threes = currentPlayer.checkThree()
+		print(currentPlayer.checkThree(0))
+		Threes = currentPlayer.checkThree(0)
 	elif choice == "Fours" or choice == "fours":
-		print(currentPlayer.checkFour())
-		Fours = currentPlayer.checkFour()
+		print(currentPlayer.checkFour(0))
+		Fours = currentPlayer.checkFour(0)
 	elif choice == "Fives" or choice == "fives":
-		print(currentPlayer.checkFive())
-		Fives = currentPlayer.checkFive()
+		print(currentPlayer.checkFive(0))
+		Fives = currentPlayer.checkFive(0)
 	elif choice == "Sixes" or choice == "sixes":
-		print(currentPlayer.checkSix())
-		Sixes = currentPlayer.checkSix()
+		print(currentPlayer.checkSix(0))
+		Sixes = currentPlayer.checkSix(0)
 	elif choice == "Three of a kind" or choice == "three of a kind":
-		print(currentPlayer.checkthreeofakind())
-		three_of_a_kind = currentPlayer.checkthreeofakind()
+		print(currentPlayer.checkthreeofakind(0))
+		three_of_a_kind = currentPlayer.checkthreeofakind(0)
 	elif choice == "Four of a kind" or choice == "four of a kind":
-		print(currentPlayer.checkfourofakind())
-		four_of_a_kind = currentPlayer.checkfourofakind()
+		print(currentPlayer.checkfourofakind(0))
+		four_of_a_kind = currentPlayer.checkfourofakind(0)
 	elif choice == "small straight" or choice == "Small Straight":
-		print(currentPlayer.small_straight())
-		small_straight = currentPlayer.small_straight()
+		print(currentPlayer.small_straight(0))
+		small_straight = currentPlayer.small_straight(0)
 	elif choice == "large straight" or choice == "Large Straight":
-		print(currentPlayer.large_straight())
-		large_straight = currentPlayer.large_straight()
+		print(currentPlayer.large_straight(0))
+		large_straight = currentPlayer.large_straight(0)
 	elif choice == "Full house" or choice == "full house" or choice == "Full House":
-		print(currentPlayer.checkFullHouse())
-		full_house = checkFullHouse()
+		print(currentPlayer.checkFullHouse(0))
+		full_house = checkFullHouse(0)
 	elif choice == "Chance" or choice == "chance":
-		print(sum(dice))
-		chance = sum(dice)
+		print(currentPlayer.chance(0))
+		chAnce = currentPlayer.chance(0)
 	elif choice == "Yahtzee" or choice == "yahtzee":
-		print(currentPlayer.checkYahtzee())
-		yahtzee = currentPlayer.checkYahtzee()
+		print(currentPlayer.checkYahtzee(0))
+		yahtzee = currentPlayer.checkYahtzee(0)
 	elif choice == "none":
-		currentPlayer1.roll_replace()		
+		currentPlayer.roll_replace()		
 	else: 
 		choice = input("Which category would you like to choose? (type 'none' to roll again) ")
 	total = Ones+Twos+Threes+Fours+Fives+Sixes
@@ -106,9 +106,9 @@ while x < 27:
 	╠═══════════╣╠═══════════╣╠═══════════╣
 	║ Full House║║ {14}{15}║║ {14}{15}║
 	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Chance    ║║ {16}{17}║║ {16}{16}║
+	║ Chance    ║║ {16}{17}║║ {16}{17}║
 	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Yahtzee   ║║ {17}{18}║║ {17}{18}║
+	║ Yahtzee   ║║ {18}{19}║║ {18}{19}║
 	╚═══════════╝╚═══════════╝╚═══════════╝
 
 	""".format(
@@ -124,7 +124,7 @@ while x < 27:
 		small_straight, ' '*(box_design_length-len(str(small_straight))),
 		large_straight, ' '*(box_design_length-len(str(large_straight))),
 		full_house, ' '*(box_design_length-len(str(full_house))),
-		chance, ' '*(box_design_length-len(str(chance))),
+		chAnce, ' '*(box_design_length-len(str(chAnce))),
 		yahtzee, ' '*(box_design_length-len(str(yahtzee))),
 		)
 	)
