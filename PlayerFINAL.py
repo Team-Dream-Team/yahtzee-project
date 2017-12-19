@@ -35,7 +35,10 @@ class Player:
 				self.dice[x-1] = random.randint(1,6)
 				x += 1
 			i += 1
-			print(self.dice)
+		while i > 3 :
+			("Sorry, you cannot roll anymore...please choose your category.")
+			break
+		print(self.dice)
 	'''		
 	def roll_replace(self):
 
@@ -89,43 +92,43 @@ class Player:
 
 	#check dice list for given number and add them all up
 	def checkOne(self, score1): 
-		if dice.count(1) > 0:
-			self.score1 += dice.count(1)*1
+		if self.dice.count(1) > 0:
+			self.score1 += self.dice.count(1)*1/2
 			return self.score1
 		else: 
 			self.score1 += 0
 			return self.score1
 	def checkTwo(self, score2): 
-		if dice.count(2) > 0:
-			self.score2 += dice.count(2)*2
+		if self.dice.count(2) > 0:
+			self.score2 += self.dice.count(2)*2/2
 			return self.score2
 		else: 
 			self.score2 += 0
 			return self.score2
 	def checkThree(self, score3): 
-		if dice.count(3) > 0:	
-			self.score3 += dice.count(3)*3
+		if self.dice.count(3) > 0:	
+			self.score3 += self.dice.count(3)*3/2
 			return self.score3
 		else: 
 			self.score3 += 0
 			return self.score3
 	def checkFour(self, score4): 
-		if dice.count(4) > 0:
-			self.score4 += dice.count(4)*4
+		if self.dice.count(4) > 0:
+			self.score4 += self.dice.count(4)*4/2
 			return self.score4
 		else: 
 			self.score4 += 0
 			return self.score4
 	def checkFive(self, score5): 
-		if dice.count(5) > 0:
-			self.score5 += dice.count(5)*5
+		if self.dice.count(5) > 0:
+			self.score5 += self.dice.count(5)*5/2
 			return self.score5
 		else: 
 			self.score5 += 0
 			return self.score5
 	def checkSix(self, score6): 
-		if dice.count(6) > 0:
-			self.score6 += dice.count(6)*6
+		if self.dice.count(6) > 0:
+			self.score6 += self.dice.count(6)*6/2
 			return self.score6
 		else: 
 			self.score6 += 0
@@ -133,9 +136,9 @@ class Player:
 	#check three of a kind
 	def checkthreeofakind(self, scorethreeofakind):
 	#add up all the dice in the list if there is at least a three of a kind
-		for number in dice: 
-			if dice.count(number) >= 3: 
-				self.scorethreeofakind += sum(dice)
+		for number in self.dice: 
+			if self.dice.count(number) >= 3: 
+				self.scorethreeofakind += sum(self.dice)
 				return self.scorethreeofakind
 			else: 
 				self.scorethreeofakind += 0
@@ -143,9 +146,9 @@ class Player:
 
 	def checkfourofakind(self, scorefourofakind): 
 	#add up all the dice if there is at least a four of a kind
-		for number in dice: 
+		for number in self.dice: 
 			if dice.count(number) >= 4: 
-				self.scorefourofakind += sum(dice)
+				self.scorefourofakind += sum(self.dice)
 				return self.scorefourofakind
 			else:
 				self.scorefourofakind += 0
@@ -153,7 +156,7 @@ class Player:
 
 	def checkYahtzee(self, scoreYahtzee):
 	#if there is a yahtzee, you will be awarded points based off your first or second time
-		for number in dice: 
+		for number in self.dice: 
 			if dice.count(number) == 5: 
 				if yahtzeeWin:
 					self.scoreYahtzee += 100
@@ -169,10 +172,10 @@ class Player:
 	#check for full house numbers in the dice and award 25 points if full house exists
 	#otherwise, award 0 points
 	def checkFullHouse(self, scoreFullHouse):
-		for num in dice: 
-			if dice.count(num) == 3:
-				for second_num in dice: 
-					if dice.count(second_num) == 2:
+		for num in self.dice: 
+			if self.dice.count(num) == 3:
+				for second_num in self.dice: 
+					if self.dice.count(second_num) == 2:
 						self.scoreFullHouse += 25
 						return self.scoreFullHouse
 			else: 
@@ -181,7 +184,7 @@ class Player:
 
 	
 	def small_straight(self, scoresmall_straight):
-		sortArray = list(set(dice))
+		sortArray = list(set(self.dice))
 		if sortArray == [1,2,3,4] or sortArray == [2,3,4,5] or sortArray == [3,4,5,6]:
 			self.scoresmall_straight += 30
 			return self.scoresmall_straight
@@ -189,7 +192,7 @@ class Player:
 			self.scoresmall_straight += 0
 			return self.scoresmall_straight
 	def large_straight(self, scorelarge_straight):
-		sortArray = list(set(dice))
+		sortArray = list(set(self.dice))
 		if sortArray == [1,2,3,4,5] or sortArray == [2,3,4,5,6]:
 			self.scorelarge_straight += 40
 			return self.scorelarge_straight
@@ -197,8 +200,8 @@ class Player:
 			self.scorelarge_straight += 0
 			return self.scorelarge_straight
 	def chance(self, score_chance):
-		print(sum(dice))
-		chance = sum(dice)
+		print(sum(self.dice))
+		chance = sum(self.dice)
 		self.score_chance += chance
 		return self.score_chance
 
