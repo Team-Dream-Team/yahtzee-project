@@ -24,6 +24,7 @@ class Player:
 			#dice class, dice list needs to be global since it will be used to check scores
 			global dice
 			self.dice = [random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6)]
+			self.dice = sorted(self.dice)
 			print(self.dice)
 	def roll_replace(self):
 		i = 1
@@ -34,8 +35,9 @@ class Player:
 			while x < len(result2):
 				self.dice[result2[x]-1] = random.randint(1,6)
 				x += 1
+				print(sorted(self.dice))
 			i += 1
-		print(self.dice)
+		print(sorted(self.dice))
 	'''		
 	def roll_replace(self):
 
@@ -144,7 +146,7 @@ class Player:
 	def checkfourofakind(self, scorefourofakind): 
 	#add up all the dice if there is at least a four of a kind
 		for number in self.dice: 
-			if dice.count(number) >= 4: 
+			if self.dice.count(number) >= 4: 
 				self.scorefourofakind += sum(self.dice)
 				return self.scorefourofakind
 			else:
@@ -154,7 +156,7 @@ class Player:
 	def checkYahtzee(self, scoreYahtzee):
 	#if there is a yahtzee, you will be awarded points based off your first or second time
 		for number in self.dice: 
-			if dice.count(number) == 5: 
+			if self.dice.count(number) == 5: 
 				if yahtzeeWin:
 					self.scoreYahtzee += 100
 					return self.scoreYahtzee
@@ -170,9 +172,9 @@ class Player:
 	#otherwise, award 0 points
 	def checkFullHouse(self, scoreFullHouse):
 		for num in self.dice: 
-			if self.dice.count(num) == 3:
+			if self.dice.count(num) == 3 or self.dice.count(num) == 2:
 				for second_num in self.dice: 
-					if self.dice.count(second_num) == 2:
+					if self.dice.count(second_num) == 3 or self.dice.count(second_num) == 2:
 						self.scoreFullHouse += 25
 						return self.scoreFullHouse
 			else: 
@@ -183,15 +185,16 @@ class Player:
 	def small_straight(self, scoresmall_straight):
 		sortArray = list(set(self.dice))
 		if sortArray == [1,2,3,4] or sortArray == [2,3,4,5] or sortArray == [3,4,5,6]:
-			self.scoresmall_straight += 30
+			self.scoresmall_straight += 30/2
 			return self.scoresmall_straight
 		else: 
 			self.scoresmall_straight += 0
 			return self.scoresmall_straight
+
 	def large_straight(self, scorelarge_straight):
 		sortArray = list(set(self.dice))
 		if sortArray == [1,2,3,4,5] or sortArray == [2,3,4,5,6]:
-			self.scorelarge_straight += 40
+			self.scorelarge_straight += 40/2
 			return self.scorelarge_straight
 		else: 
 			self.scorelarge_straight += 0
