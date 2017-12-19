@@ -20,16 +20,26 @@ class Player:
 		self.score_chance = score_chance
 
 
-	def roll_dice(self, x):
-		#dice class, dice list needs to be global since it will be used to check scores
-		global dice
-		dice = []
-		for i in range(x):
-			dice += [random.randint(1,6)]
-			dice = sorted(dice)
-			print(dice)	
-		return dice
+	def roll(self):
+			#dice class, dice list needs to be global since it will be used to check scores
+			global dice
+			self.dice = [random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6)]
+			print(self.dice)
 	def roll_replace(self):
+		i = 1
+		while i < 3: 
+			result = input("What number dice do you want to reroll? (1-5) (Separate numbers with a space)(Leave blank for no reroll)")
+			result2 = list(map(int, result.split()))
+			x = 0
+			while x < len(result2):
+				self.dice[x-1] = random.randint(1,6)
+				x += 1
+			i += 1
+			print(self.dice)
+	'''		
+	def roll_replace(self):
+
+
 		result = input("Do you want to keep these dice? (y or n)?")
 		result = result.lower()
 		rolls = 0
@@ -43,8 +53,8 @@ class Player:
 				replaceNums = input("Type the ordinal numbers (first position would be 1, second would be 2) \n dice to replace...type done when done\n")
 				if replaceNums == '1': 
 					removed1 = dice.pop(0)
-					print(dice)
-					dice.append(self.roll_dice(1))
+					existent = print(dice)
+					new = dice.append(self.roll_dice(1))
 					print(dice)
 					pick += 1
 					return removed1
@@ -74,8 +84,8 @@ class Player:
 					new_dice = dice + keeping 
 					rolls += 1
 					break
-				
-			
+		'''		
+	
 
 	#check dice list for given number and add them all up
 	def checkOne(self, score1): 

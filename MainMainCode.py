@@ -1,18 +1,17 @@
 #Ben's Class:
 import random
 import time
-from Player import Player
+from PlayerFINAL import Player
+
 
 #Main Code
 print("Welcome to Yahtzee.")
 name1 = input(str("What is player 1's name? "))
 player1 = Player(name1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 name2 = input(str("What is player 2's name? "))
-<<<<<<< HEAD
 player2 = Player(name2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-=======
-player2 = Player(name2, 0)
->>>>>>> b9631faff1147b03bfa22683a2db7e101492bb90
+
+
 Ones = 0
 Twos = 0
 Threes = 0
@@ -30,8 +29,7 @@ box_design_length = 10
 
 for turnNum in range(13):
 	print(player1.name+"'s Turn")
-	player1.roll_dice(5)
-<<<<<<< HEAD
+	player1.roll()
 	n = 1
 	while n == 1: 
 		choice = input("Which category would you like to choose? (type 'none' to roll again) ")
@@ -46,7 +44,6 @@ for turnNum in range(13):
 			print(player1.checkThree(0))
 			Threes = player1.checkThree(0)
 		elif choice == "Fours" or choice == "fours":
-
 			print(player1.checkFour(0))
 			Fours = player1.checkFour(0)
 		elif choice == "Fives" or choice == "threes":
@@ -147,7 +144,6 @@ for turnNum in range(13):
 			)
 		)			
 			
-=======
 	choice = input("Which category would you like to choose? (type 'none' to roll again) ")
 
 	if choice == "Ones" or choice == "ones":
@@ -248,7 +244,6 @@ for turnNum in range(13):
 		)
 	)			
 		
->>>>>>> b9631faff1147b03bfa22683a2db7e101492bb90
 for turnNum in range(13):
 	print(player2.name+"'s Turn")
 	input("Press enter to roll your dice.")
