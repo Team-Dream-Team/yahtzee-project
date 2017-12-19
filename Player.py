@@ -1,230 +1,194 @@
-#Ben's Class:
 import random
-import time
-from Player import Player
 
-#Main Code
-print("Welcome to Yahtzee.")
-name1 = input(str("What is player 1's name? "))
-player1 = Player(name1, 0)
-name2 = input(str("What is player 2's name? "))
-player2 = Player(name2, 0)
-Ones = 0
-Twos = 0
-Threes = 0
-Fours = 0
-Fives = 0
-Sixes = 0
-three_of_a_kind = 0
-four_of_a_kind = 0
-small_straight = 0
-large_straight = 0
-full_house = 0
-chance = 0
-yahtzee = 0
-box_design_length = 10
+class Player: 
 
-for turnNum in range(13):
-	print(player1.name+"'s Turn")
-	player1.roll_dice(5)
-	choice = input("Which category would you like to choose? (type 'none' to roll again) ")
+	def __init__(self, name, score1, score2, score3, score4, score5, score6, scorethreeofakind, scorefourofakind, scoresmall_straight, scorelarge_straight, scoreFullHouse, scoreYahtzee, score_chance):
+		#multiple players, multiple names
+		self.name = name 
+		self.score1 = score1
+		self.score2 = score2
+		self.score3 = score3
+		self.score4 = score4
+		self.score5 = score5
+		self.score6 = score6
+		self.scorethreeofakind = scorethreeofakind
+		self.scorefourofakind = scorefourofakind
+		self.scoresmall_straight = scoresmall_straight
+		self.scorelarge_straight= scorelarge_straight
+		self.scoreFullHouse = scoreFullHouse
+		self.scoreYahtzee = scoreYahtzee
+		self.score_chance = score_chance
 
-	if choice == "Ones" or choice == "ones":
-		print(Player.checkOne())
-		Ones = Player.checkOne()
-	elif choice == "Twos" or choice == "twos":
-		print(Player.checkTwo())
-		Twos = Player.checkTwo()
-	elif choice == "Threes" or choice == "threes":
-		print(Player.checkThree())
-		Threes = Player.checkThree()
-	elif choice == "Fours" or choice == "fours":
-		print(Player.checkFour())
-		Fours = Player.checkFour()
-	elif choice == "Fives" or choice == "fives":
-		print(Player.checkFive())
-		Fives = Player.checkFive()
-	elif choice == "Sixes" or choice == "sixes":
-		print(Player.checkSix())
-		Sixes = Player.checkSix()
-	elif choice == "Three of a kind" or choice == "three of a kind":
-		print(Player.checkthreeofakind())
-		three_of_a_kind = Player.checkthreeofakind()
-	elif choice == "Four of a kind" or choice == "four of a kind":
-		print(Player.checkfourofakind())
-		four_of_a_kind = Player.checkfourofakind()
-	elif choice == "small straight" or choice == "Small Straight":
-		print(Player.small_straight())
-		small_straight = Player.small_straight()
-	elif choice == "large straight" or choice == "Large Straight":
-		print(Player.large_straight())
-		large_straight = Player.large_straight()
-	elif choice == "Full house" or choice == "full house" or choice == "Full House":
-		print(Player.checkFullHouse())
-		full_house = checkFullHouse()
-	elif choice == "Chance" or choice == "chance":
+
+	def roll_dice(self, x):
+		#dice class, dice list needs to be global since it will be used to check scores
+		global dice
+		dice = []
+		for i in range(x):
+			dice += [random.randint(1,6)]
+			dice = sorted(dice)
+			print(dice)	
+		return dice
+	def roll_replace(self):
+		result = input("Do you want to keep these dice? (y or n)?")
+		result = result.lower()
+		rolls = 0
+		if result == "y":
+			return None
+		#if the player wants to roll dice again...
+		if result == "n":
+			pick = 1
+			rolls = 1
+			while pick <= 5 and rolls <= 3:
+				replaceNums = input("Type the ordinal numbers (first position would be 1, second would be 2) \n dice to replace...type done when done\n")
+				if replaceNums == '1': 
+					removed1 = dice.pop(0)
+					print(dice)
+					dice.append(self.roll_dice(1))
+					print(dice)
+					pick += 1
+					return removed1
+				elif replaceNums == '2': 
+					removed2 = dice.pop(1)
+					print(dice)
+					pick += 1
+					return removed2
+				elif replaceNums == '3': 
+					removed3 = dice.pop(2)
+					print(dice)
+					pick += 1
+					return removed3
+				elif replaceNums == '4':
+					removed4 = dice.pop(3)
+					print(dice)
+					pick += 1
+					return removed4
+				elif replaceNums == '5': 
+					removed5 = dice.pop(4)
+					print(dice)
+					pick += 1
+					return removed5
+				elif replaceNums == 'done' or replaceNums == "Done":
+					keeping =[]
+					self.roll_dice(pick)
+					new_dice = dice + keeping 
+					rolls += 1
+					break
+				
+			
+
+	#check dice list for given number and add them all up
+	def checkOne(self, score1): 
+		if dice.count(1) > 0:
+			self.score1 += dice.count(1)*1
+			return self.score1
+		else: 
+			self.score1 += 0
+			return self.score1
+	def checkTwo(self, score2): 
+		if dice.count(2) > 0:
+			self.score2 += dice.count(2)*2
+			return self.score2
+		else: 
+			self.score2 += 0
+			return self.score2
+	def checkThree(self, score3): 
+		if dice.count(3) > 0:	
+			self.score3 += dice.count(3)*3
+			return self.score3
+		else: 
+			self.score3 += 0
+			return self.score3
+	def checkFour(self, score4): 
+		if dice.count(4) > 0:
+			self.score4 += dice.count(4)*4
+			return self.score4
+		else: 
+			self.score4 += 0
+			return self.score4
+	def checkFive(self, score5): 
+		if dice.count(5) > 0:
+			self.score5 += dice.count(5)*5
+			return self.score5
+		else: 
+			self.score5 += 0
+			return self.score5
+	def checkSix(self, score6): 
+		if dice.count(6) > 0:
+			self.score6 += dice.count(6)*6
+			return self.score6
+		else: 
+			self.score6 += 0
+			return self.score6
+	#check three of a kind
+	def checkthreeofakind(self, scorethreeofakind):
+	#add up all the dice in the list if there is at least a three of a kind
+		for number in dice: 
+			if dice.count(number) >= 3: 
+				self.scorethreeofakind += sum(dice)
+				return self.scorethreeofakind
+			else: 
+				self.scorethreeofakind += 0
+				return self.scorethreeofakind
+
+	def checkfourofakind(self, scorefourofakind): 
+	#add up all the dice if there is at least a four of a kind
+		for number in dice: 
+			if dice.count(number) >= 4: 
+				self.scorefourofakind += sum(dice)
+				return self.scorefourofakind
+			else:
+				self.scorefourofakind += 0
+				return self.scorefourofakind
+
+	def checkYahtzee(self, scoreYahtzee):
+	#if there is a yahtzee, you will be awarded points based off your first or second time
+		for number in dice: 
+			if dice.count(number) == 5: 
+				if yahtzeeWin:
+					self.scoreYahtzee += 100
+					return self.scoreYahtzee
+				else:
+					yahtzeeWin = True
+					self.scoreYahtzee += 50
+					return self.scoreYahtzee
+			else: 
+				self.scoreYahtzee += 0
+				return self.scoreYahtzee
+
+	#check for full house numbers in the dice and award 25 points if full house exists
+	#otherwise, award 0 points
+	def checkFullHouse(self, scoreFullHouse):
+		for num in dice: 
+			if dice.count(num) == 3:
+				for second_num in dice: 
+					if dice.count(second_num) == 2:
+						self.scoreFullHouse += 25
+						return self.scoreFullHouse
+			else: 
+				self.scoreFullHouse += 0
+				return self.scoreFullHouse
+
+	
+	def small_straight(self, scoresmall_straight):
+		sortArray = list(set(dice))
+		if sortArray == [1,2,3,4] or sortArray == [2,3,4,5] or sortArray == [3,4,5,6]:
+			self.scoresmall_straight += 30
+			return self.scoresmall_straight
+		else: 
+			self.scoresmall_straight += 0
+			return self.scoresmall_straight
+	def large_straight(self, scorelarge_straight):
+		sortArray = list(set(dice))
+		if sortArray == [1,2,3,4,5] or sortArray == [2,3,4,5,6]:
+			self.scorelarge_straight += 40
+			return self.scorelarge_straight
+		else: 
+			self.scorelarge_straight += 0
+			return self.scorelarge_straight
+	def chance(self, score_chance):
 		print(sum(dice))
 		chance = sum(dice)
-	elif choice == "Yahtzee" or choice == "yahtzee":
-		print(Player.checkYahtzee())
-		yahtzee = Player.checkYahtzee()
-	elif choice == "none":
-		player1.roll_replace()		
-	else: 
-		choice = input("Which category would you like to choose? (type 'none' to roll again) ")
-	total = Ones+Twos+Threes+Fours+Fives+Sixes
-	print("""
-	╔═══════════╗╔═══════════╗╔═══════════╗
-	║ Ones      ║║ {0}{1}║║ {0}{1}║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Twos      ║║ {2}{3}║║ {2}{3}║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Threes    ║║ {4}{5}║║ {4}{5}║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Fours     ║║ {6}{7}║║ {6}{7}║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Fives     ║║ {8}{9}║║ {8}{9}║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Sixes     ║║ {10}{11}║║ {10}{11}║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Total     ║║ {12}{13}║║ {12}{13}║
-	╠═══════════╬╬═══════════╬╬═══════════╣
-	╠═══════════╬╬═══════════╬╬═══════════╣
-	║ Three of  ║║ {14}{15}║║ {14}{15}║
-	║ a kind    ║║           ║║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Four of   ║║ {14}{15}║║ {14}{15}║
-	║ a kind    ║║           ║║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Small     ║║ {14}{15}║║ {14}{15}║
-	║ Straight  ║║           ║║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Large     ║║ {14}{15}║║ {14}{15}║
-	║ Straight  ║║           ║║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Full House║║ {14}{15}║║ {14}{15}║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Chance    ║║ {16}{17}║║ {16}{16}║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Yahtzee   ║║ {17}{18}║║ {17}{18}║
-	╚═══════════╝╚═══════════╝╚═══════════╝
-	""".format(
-		Ones, ' '*(box_design_length-len(str(Ones))), 
-		Twos, ' '*(box_design_length-len(str(Twos))), 
-		Threes, ' '*(box_design_length-len(str(Threes))),
-		Fours, ' '*(box_design_length-len(str(Fours))),
-		Fives, ' '*(box_design_length-len(str(Fives))),
-		Sixes, ' '*(box_design_length-len(str(Sixes))),
-		total, ' '*(box_design_length-len(str(total))),
-		three_of_a_kind, ' '*(box_design_length-len(str(three_of_a_kind))),
-		four_of_a_kind, ' '*(box_design_length-len(str(four_of_a_kind))),
-		small_straight, ' '*(box_design_length-len(str(small_straight))),
-		large_straight, ' '*(box_design_length-len(str(large_straight))),
-		full_house, ' '*(box_design_length-len(str(full_house))),
-		chance, ' '*(box_design_length-len(str(chance))),
-		yahtzee, ' '*(box_design_length-len(str(yahtzee))),
-		)
-	)			
-		
-for turnNum in range(13):
-	print(player2.name+"'s Turn")
-	input("Press enter to roll your dice.")
-	player2.roll_dice(5)
-	choice = input("Which category would you like to choose? (type 'none' to roll again) ")
-	# print table
-	if choice == "Ones" or choice == "ones":
-		print(Player.checkOne())
-		Ones = Player.checkOne()
-	elif choice == "Twos" or choice == "twos":
-		print(Player.checkTwo())
-		Twos = Player.checkTwo()
-	elif choice == "Threes" or choice == "threes":
-		print(Player.checkThree())
-		Threes = Player.checkThree()
-	elif choice == "Fours" or choice == "fours":
-		print(Player.checkFour())
-		Fours = Player.checkFour()
-	elif choice == "Fives" or choice == "fives":
-		print(Player.checkFive())
-		Fives = Player.checkFive()
-	elif choice == "Sixes" or choice == "sixes":
-		print(Player.checkSix())
-		Sixes = Player.checkSix()
-	elif choice == "Three of a kind" or choice == "three of a kind":
-		print(Player.checkthreeofakind())
-		three_of_a_kind = Player.checkthreeofakind()
-	elif choice == "Four of a kind" or choice == "four of a kind":
-		print(Player.checkfourofakind())
-		four_of_a_kind = Player.checkfourofakind()
-	elif choice == "small straight" or choice == "Small Straight":
-		print(Player.small_straight())
-		small_straight = Player.small_straight()
-	elif choice == "large straight" or choice == "Large Straight":
-		print(Player.large_straight())
-		large_straight = Player.large_straight()
-	elif choice == "Full house" or choice == "full house" or choice == "Full House":
-		print(Player.checkFullHouse())
-		full_house = checkFullHouse()
-	elif choice == "Chance" or choice == "chance":
-		print(sum(dice))
-		Chance = sum(dice)
-	elif choice == "Yahtzee" or choice == "yahtzee":
-		print(Player.checkYahtzee())
-		yahtzee = Player.checkYahtzee()
-	elif choice == "none":
-		player1.roll_replace()		
-	else: 
-		choice = input("Which category would you like to choose? (type 'none' to roll again) ")			
-	total = Ones+Twos+Threes+Fours+Fives+Sixes
-	print("""
-	╔═══════════╗╔═══════════╗╔═══════════╗
-	║ Ones      ║║ {0}{1}║║ {0}{1}║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Twos      ║║ {2}{3}║║ {2}{3}║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Threes    ║║ {4}{5}║║ {4}{5}║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Fours     ║║ {6}{7}║║ {6}{7}║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Fives     ║║ {8}{9}║║ {8}{9}║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Sixes     ║║ {10}{11}║║ {10}{11}║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Total     ║║ {12}{13}║║ {12}{13}║
-	╠═══════════╬╬═══════════╬╬═══════════╣
-	╠═══════════╬╬═══════════╬╬═══════════╣
-	║ Three of  ║║ {14}{15}║║ {14}{15}║
-	║ a kind    ║║           ║║           ║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Four of   ║║ {14}{15}║║ {14}{15}║
-	║ a kind    ║║           ║║           ║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Small     ║║ {14}{15}║║ {14}{15}║
-	║ Straight  ║║           ║║           ║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Large     ║║ {14}{15}║║ {14}{15}║
-	║ Straight  ║║           ║║           ║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Full House║║ {14}{15}║║ {14}{15}║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Chance    ║║ {15}{16}║║ {16}{17}║
-	╠═══════════╣╠═══════════╣╠═══════════╣
-	║ Yahtzee   ║║ {18}{19}║║ {18}{19}║
-	╚═══════════╝╚═══════════╝╚═══════════╝
-	""".format(
-		Ones, ' '*(box_design_length-len(str(Ones))), 
-		Twos, ' '*(box_design_length-len(str(Twos))), 
-		Threes, ' '*(box_design_length-len(str(Threes))),
-		Fours, ' '*(box_design_length-len(str(Fours))),
-		Fives, ' '*(box_design_length-len(str(Fives))),
-		Sixes, ' '*(box_design_length-len(str(Sixes))),
-		total, ' '*(box_design_length-len(str(total))),
-		three_of_a_kind, ' '*(box_design_length-len(str(three_of_a_kind))),
-		four_of_a_kind, ' '*(box_design_length-len(str(four_of_a_kind))),
-		small_straight, ' '*(box_design_length-len(str(small_straight))),
-		large_straight, ' '*(box_design_length-len(str(large_straight))),
-		full_house, ' '*(box_design_length-len(str(full_house))),
-		chance, ' '*(box_design_length-len(str(chance))),
-		yahtzee, ' '*(box_design_length-len(str(yahtzee))),
-		)
-	)
+		self.score_chance += chance
+		return self.score_chance
+
