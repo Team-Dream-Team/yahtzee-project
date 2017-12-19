@@ -17,7 +17,7 @@ class Player:
 			print(dice)	
 		return dice
 
-	def roll_replace(): 
+	def roll_replace(self): 
 		replacing = []
 		replacing_indexes = []
 		rolls = 0
@@ -26,13 +26,13 @@ class Player:
 		result = (result.lower()).strip
 		while result not in ("y","n"):
 			result = input("You probably mistyped something...please try again")
-			result = (result.lower()).strip
+			result = result.lower()
 		if result == "n":
 			while rolls != 2: 
 				if rolls != 0:
 					print("Your current dice are:", dice, "\n")
-					result = input("Doyou want to keep these dice (y or n) (default is n)?")
-					result = (result.lower()).strip()
+					result = input("Do you want to keep these dice (y or n) (default is n)? \n")
+					result = result.lower()
 					if result == "y":
 						break;
 				replaceNums = input("Type the ordinal numbers (first position would be 1, second would be 2) \n dice to replace")

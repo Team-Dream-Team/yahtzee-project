@@ -43,7 +43,7 @@ for turnNum in range(13):
 		print(sum(dice))
 		Chance = sum(dice)
 	elif choice == "none":
-		roll_replace()		
+		player1.roll_replace()		
 	else: 
 		choice = input("Which category would you like to choose? (type 'none' to roll again) ")
 						
