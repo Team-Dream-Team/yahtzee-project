@@ -18,6 +18,7 @@ Threes = 0
 Fours = 0
 Fives = 0
 Sixes = 0
+
 three_of_a_kind = 0
 four_of_a_kind = 0
 small_straight = 0
@@ -29,6 +30,7 @@ box_design_length = 10
 
 currentPlayer = player1
 categoryChosen = False
+
 x = 1
 while x < 27:
 	categoryChosen = False
