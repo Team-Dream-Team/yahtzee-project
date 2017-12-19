@@ -1,132 +1,57 @@
 #Ben's Class:
 import random
 
-class Player: 
-
-	def __init__(self, name, score):
-		#multiple players, multiple names
-		self.name = name 
-		self.score = score
-
-	def roll_dice(x):
-		#dice class, dice list needs to be global since it will be used to check scores
-		global dice
-		dice = []
-		for i in range(x):
-			dice += [random.randint(1,6)]
-			dice = sorted(dice)
-			print(dice)	
-		return dice
-	#check dice list for given number and add them all up
-	def checkOne(): 
-		if self.dice.count(1) > 0:
-			self.score += self.dice.count(1)*1
-		else: 
-			self.score += 0
-		return self.score
-	def checkTwo(): 
-		if self.dice.count(2) > 0:
-			self.score += self.dice.count(2)*2
-		else: 
-			self.score += 0
-		return self.score
-	def checkThree(): 
-		if self.dice.count(3) > 0:	
-			self.score += self.dice.count(3)*3
-		else: 
-			self.score += 0
-		return self.score
-	def checkFour(): 
-		if self.dice.count(4) > 0:
-			self.score += self.dice.count(4)*4
-		else: 
-			self.score += 0
-		return self.score
-	def checkFive(): 
-		if self.dice.count(5) > 0:
-			self.score += self.dice.count(5)*5
-		else: 
-			self.score += 0
-		return self.score
-	def checkSix(): 
-		if self.dice.count(1) > 0:
-			self.score += self.dice.count(6)*6
-		else: 
-			self.score += 0
-		return self.score
-	#check three of a kind
-	def checkthreeofakind():
-	#add up all the dice in the list if there is at least a three of a kind
-		for number in dice: 
-			if dice.count(number) >= 3: 
-				self.score += sum(dice)
-			else: 
-				self.score += 0
-		return self.score
-	def checkfourofakind(): 
-	#add up all the dice if there is at least a four of a kind
-		for number in dice: 
-			if dice.count(number) >= 4: 
-				self.score += sum(dice)
-			else:
-				self.score += 0
-		return self.score
-	def checkYahtzee():
-	#if there is a yahtzee, you will be awarded points based off your first or second time
-		for number in dice: 
-			if dice.count(number) == 5: 
-				if yahtzeeWin:
-					self.score += 100
-				else:
-					yahtzeeWin = True
-					self.score += 50
-			else: 
-				self.score += 0
-		return self.score
-	#check for full house numbers in the dice and award 25 points if full house exists
-	#otherwise, award 0 points
-	def checkFullHouse():
-		for num in dice: 
-			if dice.count(num) == 3:
-				for second_num in dice: 
-					if dice.count(second_num) == 2:
-						self.score += 25
-			else: 
-				self.score += 0
-		return self.score
-	
-	def small_straight():
-		sortArray = list(set(dice))
-		if sortArray == [1,2,3,4] or sortArray == [2,3,4,5] or sortArray == [3,4,5,6]:
-			self.score += 30
-		else: 
-			self.score += 0
-	def large_straight():
-		sortArray = list(set(dice))
-		if sortArray == [1,2,3,4,5] or sortArray == [2,3,4,5,6]:
-			self.score += 40
-		else: 
-			self.score += 0
-
-
-
-	def stats(self):
-		print("Name: " +self.name)
-		print("Score:" +str(self.score))
-
-
+from Player import Player
 
 #Main Code
-print("Welcome to yahtzee.")
+print("Welcome to Yahtzee.")
 name1 = input(str("What is player 1's name? "))
 player1 = Player(name1, 0)
 name2 = input(str("What is player 2's name? "))
 player2 = Player(name2, 0)
-while rolls <= 3:
-	print(Player.name+"'s Turn")
-	available = 5
+for turnNum in range(13):
+	print(player1.name+"'s Turn")
+	player1.roll_dice(5)
+	choice = input("Which category would you like to choose? (type 'none' to roll again) ")
+	
+	# print table
+	if choice == "Ones" or choice == "ones":
+		print(Player.checkOne())
+		Ones = Player.checkOne()
+	elif choice == "Twos" or choice == "twos":
+		print(Player.checkTwo())
+		Twos = Player.checkTwo()
+	elif choice == "Threes" or choice == "threes":
+		print(Player.checkThree())
+		Threes = Player.checkThree()
+	elif choice == "Fours" or choice == "fours":
+		print(Player.checkFour())
+		Fours = Player.checkFour()
+	elif choice == "Fives" or choice == "threes":
+		print(Player.checkFive())
+		Fives = Player.checkFive()
+	elif choice == "Sixes" or choice == "sixes":
+		print(Player.checkSix())
+		Sixes = Player.checkSix()
+	elif choice == "Three of a kind" or choice == "three of a kind":
+		print(Player.checkthreeofakind())
+		three_of_a_kind = Player.checkthreeofakind()
+	elif choice == "Four of a kind" or choice == "four of a kind":
+		print(Player.checkfourofakind())
+		four_of_a_kind = Player.checkfourofakind()
+	elif choice == "Chance" or choice == "chance":
+		print(sum(dice))
+		Chance = sum(dice)
+	elif choice == "none":
+		roll_replace()		
+	else: 
+		choice = input("Which category would you like to choose? (type 'none' to roll again) ")
+						
+		
+for turnNum in range(13):
+	print(player2.name+"'s Turn")
 	input("Press enter to roll your dice.")
-	player.roll_dice(available)
+	player2.roll_dice(5)
 	choice = input("Which category would you like to choose? (type 'none' to roll again) ")
 	# print table
 	if choice == "Ones" or choice == "ones":
@@ -149,23 +74,19 @@ while rolls <= 3:
 		Sixes = Player.checkSix()
 	elif choice == "Three of a kind" or choice == "three of a kind":
 		print(Player.checkthreeofakind())
-		three_of_a_kind = Player.checkthreeofakind
-	elif choice == "Four of a kind" or choice == "four of a kind"
-
-
-
+		three_of_a_kind = Player.checkthreeofakind()
+	elif choice == "Four of a kind" or choice == "four of a kind":
+		print(Player.checkfourofakind())
+		four_of_a_kind = Player.checkfourofakind()
 	elif choice == "Chance" or choice == "chance":
 		print(sum(dice))
 		Chance = sum(dice)
-	elif choice == "none"
-		while (???):
-		print(dice)
-		numvalue = input("Which dice would you like to remove?(enter number shown on dice) ")
-		chosenDice = dice.find(numvalue)
-		dice.remove(chosenDice)
+	elif choice == "none":
+		roll_replace()		
+	else: 
+		choice = input("Which category would you like to choose? (type 'none' to roll again) ")
+						
 		
-
-
 
 '''dice.roll(5)
 print("You rolled: " DiceValues)
@@ -231,6 +152,8 @@ chance = 0
 yahtzee = 0
 total = ones+twos+threes+fours+fives+sixes
 box_design_length = 10
+
+
 print("""╔═══════════╗╔═══════════╗
 ║ Ones      ║║ {0}{1}║
 ╠═══════════╣╠═══════════╣

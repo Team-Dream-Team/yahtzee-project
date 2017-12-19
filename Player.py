@@ -7,106 +7,172 @@ class Player:
 		self.name = name 
 		self.score = score
 
-	def roll_dice():
+	def roll_dice(self, x):
 		#dice class, dice list needs to be global since it will be used to check scores
 		global dice
 		dice = []
-		for i in range(5):
+		for i in range(x):
 			dice += [random.randint(1,6)]
 			dice = sorted(dice)
 			print(dice)	
 		return dice
-	#check dice list for given number and add them all up
-	def checkOne(score1): 
+
+	def roll_replace(): 
+		replacing = []
+		replacing_indexes = []
+		rolls = 0
+		print("Your first roll was:", dice, "\n")
+		result = input("Do you want to keep these? (y or n)?")
+		result = (result.lower()).strip
+		while result not in ("y","n"):
+			result = input("You probably mistyped something...please try again")
+			result = (result.lower()).strip
+		if result == "n":
+			while rolls != 2: 
+				if rolls != 0:
+					print("Your current dice are:", dice, "\n")
+					result = input("Doyou want to keep these dice (y or n) (default is n)?")
+					result = (result.lower()).strip()
+					if result == "y":
+						break;
+				replaceNums = input("Type the ordinal numbers (first position would be 1, second would be 2) \n dice to replace")
+				try: 
+					replaced_dice = list(replaceNums)
+					for replaceNums in replaced_dice: 
+						skip = False
+
+						array_index = int(index) - 1
+						if array_index < 0:
+							raise IndexError("That wasn't an ordinal number!")
+						while array_index in replacing_indexes: 
+							print("Sorry, you are already replacing" + str(dice[array_index]) + ".\n")
+							skip = True
+							break
+						if skip:
+							continue
+						replacing.append(dice[array_index])
+						replacing_indexes.append(array_index)
+				except IndexError:
+					print("You only have 5 dice!")
+					replacing = []
+					replacing_indexes = []
+					continue
+				except: 
+					print("You spelled something wrong. Try again.")
+					replacing = []
+					replacing_indexes = []
+					continue
+				if len(replacing) == 0: 
+					print("You are keeping all dice...")
+					break;
+				print("Replacing dice...")
+				keeping = []
+
+				for index in (set([0,1,2,3,4]) - set(replacing_indexes)):
+					keeping.append(dice[index])
+
+				new_dice = roll_dice(len(replacing))
+
+				for new_die in new_dice:
+					keeping.append(new_die)
+
+				current_dice = keeping
+				replacing = []
+				replacing_indexes = []
+				rolls += 1
+		print("Your new roll was: \n" %(dice))
+
+
+							#check dice list for given number and add them all up
+	def checkOne(): 
 		if self.dice.count(1) > 0:
-			self.score1 += self.dice.count(1)*1
+			self.score += self.dice.count(1)*1
 		else: 
-			self.score1 += 0
-	def checkTwo(score2): 
+			self.score += 0
+		return self.score
+	def checkTwo(): 
 		if self.dice.count(2) > 0:
-			self.score2 += self.dice.count(2)*2
+			self.score += self.dice.count(2)*2
 		else: 
-			self.score2 += 0
-	def checkThree(score3): 
+			self.score += 0
+		return self.score
+	def checkThree(): 
 		if self.dice.count(3) > 0:	
-			self.score3 += self.dice.count(3)*3
+			self.score += self.dice.count(3)*3
 		else: 
-			self.score3 += 0
-	def checkFour(score4): 
+			self.score += 0
+		return self.score
+	def checkFour(): 
 		if self.dice.count(4) > 0:
-			self.score4 += self.dice.count(4)*4
+			self.score += self.dice.count(4)*4
 		else: 
-			self.score4 += 0
-	def checkFive(score5): 
+			self.score += 0
+		return self.score
+	def checkFive(): 
 		if self.dice.count(5) > 0:
-			self.score5 += self.dice.count(5)*5
+			self.score += self.dice.count(5)*5
 		else: 
-			self.score5 += 0
-	def checkSix(score6): 
+			self.score += 0
+		return self.score
+	def checkSix(): 
 		if self.dice.count(1) > 0:
-			self.score6 += self.dice.count(6)*6
+			self.score += self.dice.count(6)*6
 		else: 
-			self.score6 += 0
+			self.score += 0
+		return self.score
 	#check three of a kind
-	def checkthreeofakind(scorethreeofakind):
+	def checkthreeofakind():
 	#add up all the dice in the list if there is at least a three of a kind
 		for number in dice: 
 			if dice.count(number) >= 3: 
-				self.scorethreeofakind += sum(dice)
+				self.score += sum(dice)
 			else: 
-				self.scorethreeofakind += 0
-
-	def checkfourofakind(scorefourofakind): 
+				self.score += 0
+		return self.score
+	def checkfourofakind(): 
 	#add up all the dice if there is at least a four of a kind
 		for number in dice: 
 			if dice.count(number) >= 4: 
-				self.scorefourofakind += sum(dice)
+				self.score += sum(dice)
 			else:
-				self.scorefourofakind += 0
-
-	def checkYahtzee(scoreYahtzee):
+				self.score += 0
+		return self.score
+	def checkYahtzee():
 	#if there is a yahtzee, you will be awarded points based off your first or second time
 		for number in dice: 
 			if dice.count(number) == 5: 
 				if yahtzeeWin:
-					self.scoreYahtzee += 100
+					self.score += 100
 				else:
 					yahtzeeWin = True
-					self.scoreYahtzee += 50
+					self.score += 50
 			else: 
-				self.scoreYahtzee += 0
-
+				self.score += 0
+		return self.score
 	#check for full house numbers in the dice and award 25 points if full house exists
 	#otherwise, award 0 points
-	def checkFullHouse(scoreFullHouse):
+	def checkFullHouse():
 		for num in dice: 
 			if dice.count(num) == 3:
 				for second_num in dice: 
 					if dice.count(second_num) == 2:
-						self.scoreFullHouse += 25
+						self.score += 25
 			else: 
-				self.scoreFullHouse += 0
-
+				self.score += 0
+		return self.score
 	
-	def small_straight(scoresmall_straight):
+	def small_straight():
 		sortArray = list(set(dice))
 		if sortArray == [1,2,3,4] or sortArray == [2,3,4,5] or sortArray == [3,4,5,6]:
-			self.scoresmall_straight += 30
+			self.score += 30
 		else: 
-			self.scoresmall_straight += 0
-	def large_straight(scorelarge_straight):
+			self.score += 0
+	def large_straight():
 		sortArray = list(set(dice))
 		if sortArray == [1,2,3,4,5] or sortArray == [2,3,4,5,6]:
-			self.scorelarge_straight += 40
+			self.score += 40
 		else: 
-			self.scorelarge_straight += 0
+			self.score += 0
 
 
-
-	def stats(self):
-		print("Name: " +self.name)
-		print("Score:" +str(self.score))
-
-Ben = Player('Ben', 0)
-new_score = Player.roll_dice()
 
