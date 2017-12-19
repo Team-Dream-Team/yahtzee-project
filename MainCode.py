@@ -1,18 +1,14 @@
 #Ben's Class:
 import random
 import time
-from Player import Player
+from PlayerFINAL import Player
 
 #Main Code
 print("Welcome to Yahtzee.")
 name1 = input(str("What is player 1's name? "))
-player1 = Player(name1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+player1 = Player(name1, 0)
 name2 = input(str("What is player 2's name? "))
-<<<<<<< HEAD
-player2 = Player(name2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-=======
 player2 = Player(name2, 0)
->>>>>>> b9631faff1147b03bfa22683a2db7e101492bb90
 Ones = 0
 Twos = 0
 Threes = 0
@@ -28,126 +24,9 @@ chance = 0
 yahtzee = 0
 box_design_length = 10
 
-for turnNum in range(13):
+while True:
 	print(player1.name+"'s Turn")
 	player1.roll_dice(5)
-<<<<<<< HEAD
-	n = 1
-	while n == 1: 
-		choice = input("Which category would you like to choose? (type 'none' to roll again) ")
-
-		if choice == "Ones" or choice == "ones":
-			print(player1.checkOne(0))
-			Ones = player1.checkOne(0)
-		elif choice == "Twos" or choice == "twos":
-			print(player1.checkTwo(0))
-			Twos = player1.checkTwo(0)
-		elif choice == "Threes" or choice == "threes":
-			print(player1.checkThree(0))
-			Threes = player1.checkThree(0)
-		elif choice == "Fours" or choice == "fours":
-
-			print(player1.checkFour(0))
-			Fours = player1.checkFour(0)
-		elif choice == "Fives" or choice == "threes":
-			print(player1.checkFive(0))
-			Fives = player1.checkFive(0)
-
-			print(Player.checkFour(0))
-			Fours = Player.checkFour(0)
-		elif choice == "Fives" or choice == "fives":
-			print(player1.checkFive(0))
-			Fives = player1.checkFive(0)
-
-		elif choice == "Sixes" or choice == "sixes":
-			print(player1.checkSix(0))
-			Sixes = player1.checkSix(0)
-		elif choice == "Three of a kind" or choice == "three of a kind":
-			print(player1.checkthreeofakind(0))
-			three_of_a_kind = player1.checkthreeofakind(0)
-		elif choice == "Four of a kind" or choice == "four of a kind":
-
-			print(player1.checkfourofakind(0))
-			four_of_a_kind = player1.checkfourofakind(0)
-
-			print(player1.checkfourofakind(0))
-			four_of_a_kind = Player.checkfourofakind(0)
-		elif choice == "small straight" or choice == "Small Straight":
-			print(player1.small_straight(0))
-			small_straight = player1.small_straight(0)
-		elif choice == "large straight" or choice == "Large Straight":
-			print(player1.large_straight(0))
-			large_straight = player1.large_straight(0)
-		elif choice == "Full house" or choice == "full house" or choice == "Full House":
-			print(player1.checkFullHouse(0))
-			full_house = checkFullHouse(0)
-
-		elif choice == "Chance" or choice == "chance":
-			print(player1.chance(0))
-			chance = player1.chance(0)
-		elif choice == "Yahtzee" or choice == "yahtzee":
-			print(player1.checkYahtzee(0))
-			yahtzee = player1.checkYahtzee(0)
-		elif choice == "none":
-			player1.roll_replace()		
-		else: 
-			choice = input("Which category would you like to choose? (type 'none' to roll again) ")
-		total = Ones+Twos+Threes+Fours+Fives+Sixes
-		print("""
-		╔═══════════╗╔═══════════╗╔═══════════╗
-		║ Ones      ║║ {0}{1}║║ {0}{1}║
-		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Twos      ║║ {2}{3}║║ {2}{3}║
-		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Threes    ║║ {4}{5}║║ {4}{5}║
-		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Fours     ║║ {6}{7}║║ {6}{7}║
-		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Fives     ║║ {8}{9}║║ {8}{9}║
-		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Sixes     ║║ {10}{11}║║ {10}{11}║
-		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Total     ║║ {12}{13}║║ {12}{13}║
-		╠═══════════╬╬═══════════╬╬═══════════╣
-		╠═══════════╬╬═══════════╬╬═══════════╣
-		║ Three of  ║║ {14}{15}║║ {14}{15}║
-		║ a kind    ║║           ║║
-		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Four of   ║║ {14}{15}║║ {14}{15}║
-		║ a kind    ║║           ║║
-		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Small     ║║ {14}{15}║║ {14}{15}║
-		║ Straight  ║║           ║║
-		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Large     ║║ {14}{15}║║ {14}{15}║
-		║ Straight  ║║           ║║
-		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Full House║║ {14}{15}║║ {14}{15}║
-		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Chance    ║║ {16}{17}║║ {16}{16}║
-		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Yahtzee   ║║ {17}{18}║║ {17}{18}║
-		╚═══════════╝╚═══════════╝╚═══════════╝
-
-		""".format(
-			Ones, ' '*(box_design_length-len(str(Ones))), 
-			Twos, ' '*(box_design_length-len(str(Twos))), 
-			Threes, ' '*(box_design_length-len(str(Threes))),
-			Fours, ' '*(box_design_length-len(str(Fours))),
-			Fives, ' '*(box_design_length-len(str(Fives))),
-			Sixes, ' '*(box_design_length-len(str(Sixes))),
-			total, ' '*(box_design_length-len(str(total))),
-			three_of_a_kind, ' '*(box_design_length-len(str(three_of_a_kind))),
-			four_of_a_kind, ' '*(box_design_length-len(str(four_of_a_kind))),
-			small_straight, ' '*(box_design_length-len(str(small_straight))),
-			large_straight, ' '*(box_design_length-len(str(large_straight))),
-			full_house, ' '*(box_design_length-len(str(full_house))),
-			chance, ' '*(box_design_length-len(str(chance))),
-			yahtzee, ' '*(box_design_length-len(str(yahtzee))),
-			)
-		)			
-			
-=======
 	choice = input("Which category would you like to choose? (type 'none' to roll again) ")
 
 	if choice == "Ones" or choice == "ones":
@@ -247,14 +126,10 @@ for turnNum in range(13):
 		yahtzee, ' '*(box_design_length-len(str(yahtzee))),
 		)
 	)			
-		
->>>>>>> b9631faff1147b03bfa22683a2db7e101492bb90
-for turnNum in range(13):
 	print(player2.name+"'s Turn")
 	input("Press enter to roll your dice.")
 	player2.roll_dice(5)
 	choice = input("Which category would you like to choose? (type 'none' to roll again) ")
-	# print table
 	if choice == "Ones" or choice == "ones":
 		print(Player.checkOne())
 		Ones = Player.checkOne()
