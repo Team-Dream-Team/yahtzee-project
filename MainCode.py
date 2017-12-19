@@ -12,15 +12,15 @@ name1 = input(str("What is player 1's name? "))
 player1 = Player(name1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 name2 = input(str("What is player 2's name? "))
 player2 = Player(name2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+player1score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] #14 0's because of total
+player2score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
 Ones = 0
 Twos = 0
 Threes = 0
 Fours = 0
 Fives = 0
 Sixes = 0
-
-player1score = []
-player2score = []
 three_of_a_kind = 0
 four_of_a_kind = 0
 small_straight = 0
@@ -83,7 +83,7 @@ while x < 27:
 			categoryChosen = True
 		elif choice == "Full house" or choice == "full house" or choice == "Full House":
 			print(currentPlayer.checkFullHouse(0))
-			full_house = checkFullHouse(0)
+			full_house = currentPlayer.checkFullHouse(0)
 			categoryChosen = True
 		elif choice == "Chance" or choice == "chance":
 			print(currentPlayer.chance(0))
@@ -101,80 +101,80 @@ while x < 27:
 		total = Ones+Twos+Threes+Fours+Fives+Sixes
 		
 		if currentPlayer == player1:
-			player1score = (Ones, Twos, Threes, Fours, Fives, Sixes, total, three_of_a_kind, four_of_a_kind, small_straight, large_straight, full_house, chAnce, yahtzee)	
+			player1score = [Ones, Twos, Threes, Fours, Fives, Sixes, total, three_of_a_kind, four_of_a_kind, small_straight, large_straight, full_house, chAnce, yahtzee]	
 		elif currentPlayer == player2:
-			player2score = (Ones, Twos, Threes, Fours, Fives, Sixes, total, three_of_a_kind, four_of_a_kind, small_straight, large_straight, full_house, chAnce, yahtzee)
-		
+			player2score = [Ones, Twos, Threes, Fours, Fives, Sixes, total, three_of_a_kind, four_of_a_kind, small_straight, large_straight, full_house, chAnce, yahtzee]
+		print(player2score)
 		print("""
 		╔═══════════╗╔═══════════╗╔═══════════╗
-		║ Ones      ║║ {0}{1}║║ {27}{28}║
+		║ Ones      ║║ {0}{1}║║ {28}{29}║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Twos      ║║ {2}{3}║║ {29}{30}║
+		║ Twos      ║║ {2}{3}║║ {30}{31}║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Threes    ║║ {4}{5}║║ {31}{32}║
+		║ Threes    ║║ {4}{5}║║ {32}{33}║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Fours     ║║ {6}{7}║║ {33}{34}║
+		║ Fours     ║║ {6}{7}║║ {34}{35}║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Fives     ║║ {8}{9}║║ {35}{36}║
+		║ Fives     ║║ {8}{9}║║ {36}{37}║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Sixes     ║║ {10}{11}║║ {37}{38}║
+		║ Sixes     ║║ {10}{11}║║ {38}{39}║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Total     ║║ {12}{13}║║ {39}{40}║
+		║ Total     ║║ {12}{13}║║ {40}{41}║
 		╠═══════════╬╬═══════════╬╬═══════════╣
 		╠═══════════╬╬═══════════╬╬═══════════╣
-		║ Three of  ║║ {14}{15}║║ {41}{42}║
+		║ Three of  ║║ {14}{15}║║ {42}{43}║
 		║ a kind    ║║           ║║           ║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Four of   ║║ {15}{16}║║ {43}{44}║
+		║ Four of   ║║ {16}{17}║║ {44}{45}║
 		║ a kind    ║║           ║║           ║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Small     ║║ {17}{18}║║ {45}{56}║
+		║ Small     ║║ {18}{19}║║ {46}{47}║
 		║ Straight  ║║           ║║           ║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Large     ║║ {19}{20}║║ {47}{48}║
+		║ Large     ║║ {20}{21}║║ {48}{49}║
 		║ Straight  ║║           ║║           ║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Full House║║ {21}{22}║║ {49}{50}║
+		║ Full House║║ {22}{23}║║ {50}{51}║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Chance    ║║ {23}{24}║║ {51}{52}║
+		║ Chance    ║║ {24}{25}║║ {52}{53}║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Yahtzee   ║║ {25}{26}║║ {53}{54}║
+		║ Yahtzee   ║║ {26}{27}║║ {54}{55}║
 		╚═══════════╝╚═══════════╝╚═══════════╝
 		""".format(
-			player1score[0], ' '*(box_design_length-len(str(player1score[0]))), 
-			player1score[1], ' '*(box_design_length-len(str(player1score[1]))), 
-			player1score[2], ' '*(box_design_length-len(str(player1score[2]))),
-			player1score[3], ' '*(box_design_length-len(str(player1score[3]))),
-			player1score[4], ' '*(box_design_length-len(str(player1score[4]))),
-			player1score[5], ' '*(box_design_length-len(str(player1score[5]))),
-			player1score[6], ' '*(box_design_length-len(str(player1score[6]))),
-			player1score[7], ' '*(box_design_length-len(str(player1score[7]))),
-			player1score[8], ' '*(box_design_length-len(str(player1score[8]))),
-			player1score[9], ' '*(box_design_length-len(str(player1score[9]))),
-			player1score[10], ' '*(box_design_length-len(str(player1score[10]))),
-			player1score[11], ' '*(box_design_length-len(str(player1score[11]))),
-			player1score[12], ' '*(box_design_length-len(str(player1score[12]))),
-			player1score[13], ' '*(box_design_length-len(str(player1score[13]))),
-			player2score[0], ' '*(box_design_length-len(str(player2score[0]))),
-			player2score[1], ' '*(box_design_length-len(str(player2score[1]))),
-			player2score[2], ' '*(box_design_length-len(str(player2score[2]))),
-			player2score[3], ' '*(box_design_length-len(str(player2score[3]))),
-			player2score[4], ' '*(box_design_length-len(str(player2score[4]))),
-			player2score[5], ' '*(box_design_length-len(str(player2score[5]))),
-			player2score[6], ' '*(box_design_length-len(str(player2score[6]))),
-			player2score[7], ' '*(box_design_length-len(str(player2score[7]))),
-			player2score[8], ' '*(box_design_length-len(str(player2score[8]))),
-			player2score[9], ' '*(box_design_length-len(str(player2score[9]))),
-			player2score[10], ' '*(box_design_length-len(str(player2score[10]))),
-			player2score[11], ' '*(box_design_length-len(str(player2score[11]))),
-			player2score[12], ' '*(box_design_length-len(str(player2score[12]))),
-			player2score[13], ' '*(box_design_length-len(str(player2score[13]))),
+			str(player1score[0]), ' '*(box_design_length-len(str(player1score[0]))), 
+			str(player1score[1]), ' '*(box_design_length-len(str(player1score[1]))), 
+			str(player1score[2]), ' '*(box_design_length-len(str(player1score[2]))),
+			str(player1score[3]), ' '*(box_design_length-len(str(player1score[3]))),
+			str(player1score[4]), ' '*(box_design_length-len(str(player1score[4]))),
+			str(player1score[5]), ' '*(box_design_length-len(str(player1score[5]))),
+			str(player1score[6]), ' '*(box_design_length-len(str(player1score[6]))),
+			str(player1score[7]), ' '*(box_design_length-len(str(player1score[7]))),
+			str(player1score[8]), ' '*(box_design_length-len(str(player1score[8]))),
+			str(player1score[9]), ' '*(box_design_length-len(str(player1score[9]))),
+			str(player1score[10]), ' '*(box_design_length-len(str(player1score[10]))),
+			str(player1score[11]), ' '*(box_design_length-len(str(player1score[11]))),
+			str(player1score[12]), ' '*(box_design_length-len(str(player1score[12]))),
+			str(player1score[13]), ' '*(box_design_length-len(str(player1score[13]))),
+			str(player2score[0]), ' '*(box_design_length-len(str(player2score[0]))),
+			str(player2score[1]), ' '*(box_design_length-len(str(player2score[1]))),
+			str(player2score[2]), ' '*(box_design_length-len(str(player2score[2]))),
+			str(player2score[3]), ' '*(box_design_length-len(str(player2score[3]))),
+			str(player2score[4]), ' '*(box_design_length-len(str(player2score[4]))),
+			str(player2score[5]), ' '*(box_design_length-len(str(player2score[5]))),
+			str(player2score[6]), ' '*(box_design_length-len(str(player2score[6]))),
+			str(player2score[7]), ' '*(box_design_length-len(str(player2score[7]))),
+			str(player2score[8]), ' '*(box_design_length-len(str(player2score[8]))),
+			str(player2score[9]), ' '*(box_design_length-len(str(player2score[9]))),
+			str(player2score[10]), ' '*(box_design_length-len(str(player2score[10]))),
+			str(player2score[11]), ' '*(box_design_length-len(str(player2score[11]))),
+			str(player2score[12]), ' '*(box_design_length-len(str(player2score[12]))),
+			str(player2score[13]), ' '*(box_design_length-len(str(player2score[13]))),
 			)
 		)
 	if currentPlayer == player1:
 		currentPlayer = player2
 	elif currentPlayer == player2:
 		currentPlayer = player1
-	time.sleep(5)
+	input("Press Enter to end your turn: ")
 	cls()
 	x+=1
