@@ -32,12 +32,9 @@ class Player:
 			result2 = list(map(int, result.split()))
 			x = 0
 			while x < len(result2):
-				self.dice[x-1] = random.randint(1,6)
+				self.dice[result2[x]-1] = random.randint(1,6)
 				x += 1
 			i += 1
-		while i > 3 :
-			("Sorry, you cannot roll anymore...please choose your category.")
-			break
 		print(self.dice)
 	'''		
 	def roll_replace(self):
@@ -200,7 +197,6 @@ class Player:
 			self.scorelarge_straight += 0
 			return self.scorelarge_straight
 	def chance(self, score_chance):
-		print(sum(self.dice))
 		chance = sum(self.dice)
 		self.score_chance += chance
 		return self.score_chance
