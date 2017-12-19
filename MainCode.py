@@ -16,29 +16,29 @@ for turnNum in range(13):
 	
 	# print table
 	if choice == "Ones" or choice == "ones":
-		print(Player.checkOne())
-		Ones = Player.checkOne()
+		print(player1.checkOne(0))
+		Ones = player1.checkOne(0)
 	elif choice == "Twos" or choice == "twos":
-		print(Player.checkTwo())
-		Twos = Player.checkTwo()
+		print(player1.checkTwo(0))
+		Twos = player1.checkTwo(0)
 	elif choice == "Threes" or choice == "threes":
-		print(Player.checkThree())
-		Threes = Player.checkThree()
+		print(player1.checkThree(0))
+		Threes = player1.checkThree(0)
 	elif choice == "Fours" or choice == "fours":
-		print(Player.checkFour())
-		Fours = Player.checkFour()
+		print(player1.checkFour(0))
+		Fours = player1.checkFour(0)
 	elif choice == "Fives" or choice == "threes":
-		print(Player.checkFive())
-		Fives = Player.checkFive()
+		print(player1.checkFive(0))
+		Fives = player1.checkFive(0)
 	elif choice == "Sixes" or choice == "sixes":
-		print(Player.checkSix())
-		Sixes = Player.checkSix()
+		print(player1.checkSix(0))
+		Sixes = player1.checkSix(0)
 	elif choice == "Three of a kind" or choice == "three of a kind":
-		print(Player.checkthreeofakind())
-		three_of_a_kind = Player.checkthreeofakind()
+		print(player1.checkthreeofakind())
+		three_of_a_kind = player1.checkthreeofakind()
 	elif choice == "Four of a kind" or choice == "four of a kind":
-		print(Player.checkfourofakind())
-		four_of_a_kind = Player.checkfourofakind()
+		print(player1.checkfourofakind())
+		four_of_a_kind = player1.checkfourofakind()
 	elif choice == "Chance" or choice == "chance":
 		print(sum(dice))
 		Chance = sum(dice)
