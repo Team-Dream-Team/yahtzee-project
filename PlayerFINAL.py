@@ -37,14 +37,12 @@ class Player:
 				x += 1
 				print(sorted(self.dice))
 			i += 1
-<<<<<<< HEAD
+
 		print(sorted(self.dice))
-=======
 		while i > 3 :
 			("Sorry, you cannot roll anymore...please choose your category.")
 			break
 		print(self.dice)
->>>>>>> 2574daf5bad419884406f5af483ed9e83841fd5d
 	'''		
 	def roll_replace(self):
 

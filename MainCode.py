@@ -19,6 +19,8 @@ Fours = 0
 Fives = 0
 Sixes = 0
 
+player1score = []
+player2score = []
 three_of_a_kind = 0
 four_of_a_kind = 0
 small_straight = 0
@@ -95,58 +97,78 @@ while x < 27:
 			currentPlayer.roll_replace()		
 		else: 
 			choice = input("Which category would you like to choose? (type 'none' to roll again) ")
+		
 		total = Ones+Twos+Threes+Fours+Fives+Sixes
+		
+		if currentPlayer == player1:
+			player1score = (Ones, Twos, Threes, Fours, Fives, Sixes, total, three_of_a_kind, four_of_a_kind, small_straight, large_straight, full_house, chAnce, yahtzee)	
+		elif currentPlayer == player2:
+			player2score = (Ones, Twos, Threes, Fours, Fives, Sixes, total, three_of_a_kind, four_of_a_kind, small_straight, large_straight, full_house, chAnce, yahtzee)
+		
 		print("""
 		╔═══════════╗╔═══════════╗╔═══════════╗
-		║ Ones      ║║ {0}{1}║║ {0}{1}║
+		║ Ones      ║║ {0}{1}║║ {27}{28}║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Twos      ║║ {2}{3}║║ {2}{3}║
+		║ Twos      ║║ {2}{3}║║ {29}{30}║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Threes    ║║ {4}{5}║║ {4}{5}║
+		║ Threes    ║║ {4}{5}║║ {31}{32}║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Fours     ║║ {6}{7}║║ {6}{7}║
+		║ Fours     ║║ {6}{7}║║ {33}{34}║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Fives     ║║ {8}{9}║║ {8}{9}║
+		║ Fives     ║║ {8}{9}║║ {35}{36}║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Sixes     ║║ {10}{11}║║ {10}{11}║
+		║ Sixes     ║║ {10}{11}║║ {37}{38}║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Total     ║║ {12}{13}║║ {12}{13}║
+		║ Total     ║║ {12}{13}║║ {39}{40}║
 		╠═══════════╬╬═══════════╬╬═══════════╣
 		╠═══════════╬╬═══════════╬╬═══════════╣
-		║ Three of  ║║ {14}{15}║║ {14}{15}║
+		║ Three of  ║║ {14}{15}║║ {41}{42}║
 		║ a kind    ║║           ║║           ║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Four of   ║║ {15}{16}║║ {15}{16}║
+		║ Four of   ║║ {15}{16}║║ {43}{44}║
 		║ a kind    ║║           ║║           ║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Small     ║║ {17}{18}║║ {17}{18}║
+		║ Small     ║║ {17}{18}║║ {45}{56}║
 		║ Straight  ║║           ║║           ║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Large     ║║ {19}{20}║║ {19}{20}║
+		║ Large     ║║ {19}{20}║║ {47}{48}║
 		║ Straight  ║║           ║║           ║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Full House║║ {21}{22}║║ {21}{22}║
+		║ Full House║║ {21}{22}║║ {49}{50}║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Chance    ║║ {23}{24}║║ {23}{24}║
+		║ Chance    ║║ {23}{24}║║ {51}{52}║
 		╠═══════════╣╠═══════════╣╠═══════════╣
-		║ Yahtzee   ║║ {25}{26}║║ {25}{26}║
+		║ Yahtzee   ║║ {25}{26}║║ {53}{54}║
 		╚═══════════╝╚═══════════╝╚═══════════╝
-
 		""".format(
-			Ones, ' '*(box_design_length-len(str(Ones))), 
-			Twos, ' '*(box_design_length-len(str(Twos))), 
-			Threes, ' '*(box_design_length-len(str(Threes))),
-			Fours, ' '*(box_design_length-len(str(Fours))),
-			Fives, ' '*(box_design_length-len(str(Fives))),
-			Sixes, ' '*(box_design_length-len(str(Sixes))),
-			total, ' '*(box_design_length-len(str(total))),
-			three_of_a_kind, ' '*(box_design_length-len(str(three_of_a_kind))),
-			four_of_a_kind, ' '*(box_design_length-len(str(four_of_a_kind))),
-			small_straight, ' '*(box_design_length-len(str(small_straight))),
-			large_straight, ' '*(box_design_length-len(str(large_straight))),
-			full_house, ' '*(box_design_length-len(str(full_house))),
-			chAnce, ' '*(box_design_length-len(str(chAnce))),
-			yahtzee, ' '*(box_design_length-len(str(yahtzee))),
+			player1score[0], ' '*(box_design_length-len(str(player1score[0]))), 
+			player1score[1], ' '*(box_design_length-len(str(player1score[1]))), 
+			player1score[2], ' '*(box_design_length-len(str(player1score[2]))),
+			player1score[3], ' '*(box_design_length-len(str(player1score[3]))),
+			player1score[4], ' '*(box_design_length-len(str(player1score[4]))),
+			player1score[5], ' '*(box_design_length-len(str(player1score[5]))),
+			player1score[6], ' '*(box_design_length-len(str(player1score[6]))),
+			player1score[7], ' '*(box_design_length-len(str(player1score[7]))),
+			player1score[8], ' '*(box_design_length-len(str(player1score[8]))),
+			player1score[9], ' '*(box_design_length-len(str(player1score[9]))),
+			player1score[10], ' '*(box_design_length-len(str(player1score[10]))),
+			player1score[11], ' '*(box_design_length-len(str(player1score[11]))),
+			player1score[12], ' '*(box_design_length-len(str(player1score[12]))),
+			player1score[13], ' '*(box_design_length-len(str(player1score[13]))),
+			player2score[0], ' '*(box_design_length-len(str(player2score[0]))),
+			player2score[1], ' '*(box_design_length-len(str(player2score[1]))),
+			player2score[2], ' '*(box_design_length-len(str(player2score[2]))),
+			player2score[3], ' '*(box_design_length-len(str(player2score[3]))),
+			player2score[4], ' '*(box_design_length-len(str(player2score[4]))),
+			player2score[5], ' '*(box_design_length-len(str(player2score[5]))),
+			player2score[6], ' '*(box_design_length-len(str(player2score[6]))),
+			player2score[7], ' '*(box_design_length-len(str(player2score[7]))),
+			player2score[8], ' '*(box_design_length-len(str(player2score[8]))),
+			player2score[9], ' '*(box_design_length-len(str(player2score[9]))),
+			player2score[10], ' '*(box_design_length-len(str(player2score[10]))),
+			player2score[11], ' '*(box_design_length-len(str(player2score[11]))),
+			player2score[12], ' '*(box_design_length-len(str(player2score[12]))),
+			player2score[13], ' '*(box_design_length-len(str(player2score[13]))),
 			)
 		)
 	if currentPlayer == player1:
