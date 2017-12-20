@@ -1,14 +1,16 @@
-## **Yatszee**
-Welcome to Yatszee! This game will be able to accomodate the needs of any number of multiplayers. You will be rolling the five dice
+## **Yahtzee**
+Welcome to Yahtzee! This game will be able to accomodate the needs of any number of multiplayers. You will be rolling the five dice
 to try to fulfill different methods of scoring from large straight (five consecutive numbers) to full house (three matching numbers
 with another pair of numbers). The number of players and methods of scoring will be in the player class while the logistics of the game and how the game runs step by step will be done through the main code. 
 
+Update - MainCode.py is a two player versus game, while MainMainCode.py is a collaborative two player game.
 
+We hope you enjoy.
 
 
 1. Introduction 
 
-  "Welcome to Yatszee! How many players are playing the game?" (Command line argument)
+  "Welcome to Yahtzee! How many players are playing the game?" (Command line argument)
   
   "Enter Player 1 name"
   
