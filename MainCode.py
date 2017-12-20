@@ -169,6 +169,9 @@ while x < 27:
 			player2score[11], ' '*(box_design_length-len(str(player2score[11]))),
 			player2score[12], ' '*(box_design_length-len(str(player2score[12]))),
 			player2score[13], ' '*(box_design_length-len(str(player2score[13]))),
+			
+
+
 			)
 		)
 	if currentPlayer == player1:
