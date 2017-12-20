@@ -2,28 +2,31 @@
 import random
 import time
 from PlayerFINAL import Player
+import os
 
-
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')
 #Main Code
 print("Welcome to Yahtzee.")
 name1 = input(str("What is player 1's name? "))
 player1 = Player(name1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 name2 = input(str("What is player 2's name? "))
 player2 = Player(name2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-
-
 Ones = 0
 Twos = 0
 Threes = 0
 Fours = 0
 Fives = 0
 Sixes = 0
+
+player1score = []
+player2score = []
 three_of_a_kind = 0
 four_of_a_kind = 0
 small_straight = 0
 large_straight = 0
 full_house = 0
-chance = 0
+chAnce = 0
 yahtzee = 0
 box_design_length = 10
 
@@ -32,6 +35,7 @@ categoryChosen = False
 
 x = 1
 while x < 27:
+	categoryChosen = False
 	print(currentPlayer.name+"'s Turn")
 	currentPlayer.roll()
 	while categoryChosen == False:
@@ -66,7 +70,6 @@ while x < 27:
 			three_of_a_kind = currentPlayer.checkthreeofakind(0)
 			categoryChosen = True
 		elif choice == "Four of a kind" or choice == "four of a kind":
-
 			print(currentPlayer.checkfourofakind(0))
 			four_of_a_kind = currentPlayer.checkfourofakind(0)
 			categoryChosen = True
@@ -79,13 +82,12 @@ while x < 27:
 			large_straight = currentPlayer.large_straight(0)
 			categoryChosen = True
 		elif choice == "Full house" or choice == "full house" or choice == "Full House":
-			print(currentPlayer.scoreFullHouse)
+			print(currentPlayer.checkFullHouse(0))
 			full_house = currentPlayer.checkFullHouse(0)
-			categoryChosen = True 
-
+			categoryChosen = True
 		elif choice == "Chance" or choice == "chance":
 			print(currentPlayer.chance(0))
-			chance = currentPlayer.chance(0)
+			chAnce = currentPlayer.chance(0)
 			categoryChosen = True
 		elif choice == "Yahtzee" or choice == "yahtzee":
 			print(currentPlayer.checkYahtzee(0))
@@ -93,10 +95,9 @@ while x < 27:
 			categoryChosen = True
 		elif choice == "none":
 			currentPlayer.roll_replace()		
-			categoryChosen = True
 		else: 
 			choice = input("Which category would you like to choose? (type 'none' to roll again) ")
-			categoryChosen = True
+		
 		total = Ones+Twos+Threes+Fours+Fives+Sixes
 		
 		print("""
@@ -148,15 +149,16 @@ while x < 27:
 			small_straight, ' '*(box_design_length-len(str(small_straight))),
 			large_straight, ' '*(box_design_length-len(str(large_straight))),
 			full_house, ' '*(box_design_length-len(str(full_house))),
-			chance, ' '*(box_design_length-len(str(chance))),
+			chAnce, ' '*(box_design_length-len(str(chAnce))),
 			yahtzee, ' '*(box_design_length-len(str(yahtzee))),
-			))	
-if currentPlayer == player1:
-	currentPlayer == player2
-elif currentPlayer == player2:
-	currentPlayer == player1
-x += 1
 
-
-			
+			)
+		)
+	if currentPlayer == player1:
+		currentPlayer = player2
+	elif currentPlayer == player2:
+		currentPlayer = player1
+	time.sleep(5)
+	cls()
+	x+=1
 	

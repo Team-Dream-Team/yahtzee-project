@@ -27,6 +27,7 @@ class Player:
 			self.dice = sorted(self.dice)
 			print(self.dice)
 	def roll_replace(self):
+		#replace and roll dice of choice
 		i = 1
 		while i < 3: 
 			result = input("What number dice do you want to reroll? (1-5) (Separate numbers with a space)(Leave blank for no reroll)")
@@ -43,56 +44,6 @@ class Player:
 			("Sorry, you cannot roll anymore...please choose your category.")
 			break
 		print(self.dice)
-	'''		
-	def roll_replace(self):
-
-
-		result = input("Do you want to keep these dice? (y or n)?")
-		result = result.lower()
-		rolls = 0
-		if result == "y":
-			return None
-		#if the player wants to roll dice again...
-		if result == "n":
-			pick = 1
-			rolls = 1
-			while pick <= 5 and rolls <= 3:
-				replaceNums = input("Type the ordinal numbers (first position would be 1, second would be 2) \n dice to replace...type done when done\n")
-				if replaceNums == '1': 
-					removed1 = dice.pop(0)
-					existent = print(dice)
-					new = dice.append(self.roll_dice(1))
-					print(dice)
-					pick += 1
-					return removed1
-				elif replaceNums == '2': 
-					removed2 = dice.pop(1)
-					print(dice)
-					pick += 1
-					return removed2
-				elif replaceNums == '3': 
-					removed3 = dice.pop(2)
-					print(dice)
-					pick += 1
-					return removed3
-				elif replaceNums == '4':
-					removed4 = dice.pop(3)
-					print(dice)
-					pick += 1
-					return removed4
-				elif replaceNums == '5': 
-					removed5 = dice.pop(4)
-					print(dice)
-					pick += 1
-					return removed5
-				elif replaceNums == 'done' or replaceNums == "Done":
-					keeping =[]
-					self.roll_dice(pick)
-					new_dice = dice + keeping 
-					rolls += 1
-					break
-		'''		
-	
 
 	#check dice list for given number and add them all up
 	def checkOne(self, score1): 
@@ -137,12 +88,13 @@ class Player:
 		else: 
 			self.score6 += 0
 			return self.score6
+
 	#check three of a kind
 	def checkthreeofakind(self, scorethreeofakind):
 	#add up all the dice in the list if there is at least a three of a kind
 		for number in self.dice: 
 			if self.dice.count(number) >= 3: 
-				self.scorethreeofakind += sum(self.dice)
+				self.scorethreeofakind += sum(self.dice)/2
 				return self.scorethreeofakind
 			else: 
 				self.scorethreeofakind += 0
@@ -152,7 +104,7 @@ class Player:
 	#add up all the dice if there is at least a four of a kind
 		for number in self.dice: 
 			if self.dice.count(number) >= 4: 
-				self.scorefourofakind += sum(self.dice)
+				self.scorefourofakind += sum(self.dice)/2
 				return self.scorefourofakind
 			else:
 				self.scorefourofakind += 0
@@ -185,8 +137,7 @@ class Player:
 			else: 
 				self.scoreFullHouse += 0
 				return self.scoreFullHouse
-
-	
+	#checksmall_straight
 	def small_straight(self, scoresmall_straight):
 		sortArray = list(set(self.dice))
 		if sortArray == [1,2,3,4] or sortArray == [2,3,4,5] or sortArray == [3,4,5,6]:
@@ -195,7 +146,7 @@ class Player:
 		else: 
 			self.scoresmall_straight += 0
 			return self.scoresmall_straight
-
+	#checklarge_straight
 	def large_straight(self, scorelarge_straight):
 		sortArray = list(set(self.dice))
 		if sortArray == [1,2,3,4,5] or sortArray == [2,3,4,5,6]:
@@ -204,9 +155,10 @@ class Player:
 		else: 
 			self.scorelarge_straight += 0
 			return self.scorelarge_straight
+	#checkchance
 	def chance(self, score_chance):
 		print(sum(self.dice))
 		chance = sum(self.dice)
-		self.score_chance += chance
+		self.score_chance += chance/2
 		return self.score_chance
 
